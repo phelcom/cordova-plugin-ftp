@@ -106,9 +106,9 @@ export class Ftp
      * ```
      * @return {Promise<any>}
      * */
-    public static isAvailible ():Promise<any>
+    public isAvailible ():Promise<any>
     {
-        return new Promise((reject, resolve) => {
+        return new Promise<void>((reject, resolve) => {
             if (_.has(window, 'cordova.plugin.ftp')) resolve();
             reject();
         })
@@ -118,7 +118,7 @@ export class Ftp
      *
      * @return {string}
      * */
-    public static basename (path:string, suffix?:string):string
+    public basename (path:string, suffix?:string):string
     {
         let b = path, lastChar = b.charAt(b.length - 1);
         if (lastChar === '/' || lastChar === '\\') b = b.slice(0, -1);
@@ -132,7 +132,7 @@ export class Ftp
      * @param {string} path - Full path
      * @return {string}
      * */
-    public static dirname (path:string):string
+    public dirname (path:string):string
     {
         return path.replace(/\\/g, '/').replace(/\/[^/]*\/?$/, '')
     }
@@ -154,7 +154,7 @@ export class Ftp
      *  }
      * ```
      * */
-    public static connect (hostname:string, username:string, password:string):Promise<any>
+    public connect (hostname:string, username:string, password:string):Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.connect(hostname, username, password, (response:any) => resolve(response), (err:any) => reject(err));
@@ -178,9 +178,9 @@ export class Ftp
      *      })
      *  }
      * */
-    public static upload (local:string, remote:string):Promise<any>
+    public upload (local:string, remote:string):Promise<any>
     {
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             cordova.plugin.ftp.upload(local, remote, (percentage:any) => {
                 if (percentage == 1) resolve();
             }, (err:any) => reject(err))
@@ -210,7 +210,7 @@ export class Ftp
      *      })
      *  }
      * */
-    public static uploadWithProgress (local:string, remote:string):Observable<any>
+    public uploadWithProgress (local:string, remote:string):Observable<any>
     {
         return new Observable((observer:Subscriber<any>) => {
             cordova.plugin.ftp.upload(local, remote, (percentage:any) => {
@@ -239,9 +239,9 @@ export class Ftp
      *      })
      *  }
      * */
-    public static download (local:string, remote:string):Promise<any>
+    public download (local:string, remote:string):Promise<any>
     {
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             cordova.plugin.ftp.download(local, remote, (percentage:any) => {
                 if (percentage == 1) resolve();
             } , (err:any) => reject(err))
@@ -269,7 +269,7 @@ export class Ftp
      *      })
      *  }
      * */
-    public static downloadWithProgress (local:string, remote:string):Observable<any>
+    public downloadWithProgress (local:string, remote:string):Observable<any>
     {
         return new Observable((observer:Subscriber<any>) => {
             cordova.plugin.ftp.download(local, remote, (percentage:any) => {
@@ -308,7 +308,7 @@ export class Ftp
      *      })
      *  }
      * */
-    public static rm (remote:string):Promise<any>
+    public rm (remote:string):Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.rm(remote, (success:any) => resolve(success), (err:any) => reject(err))
@@ -318,7 +318,7 @@ export class Ftp
      * @param {string} remote - Remote path
      * @return {Promise<any>}
      * */
-    public static rmdir (remote:string):Promise<any>
+    public rmdir (remote:string):Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.rmdir(remote, (success:any) => resolve(success), (err:any) => reject(err))
@@ -328,7 +328,7 @@ export class Ftp
      * @param {string} remote - Remote path
      * @return {Promise<any>}
      * */
-    public static ls(remote:string):Promise<any>
+    public ls(remote:string):Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.ls(remote, (success:any) => resolve(success), (err:any) => reject(err));
@@ -338,7 +338,7 @@ export class Ftp
      * @param {string} remote - Remote path
      * @return {Promise<any>}
      * */
-    public static mkdir(remote:string):Promise<any>
+    public mkdir(remote:string):Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.mkdir(remote, (success:any) => resolve(success), (err:any) => reject(err));
@@ -347,7 +347,7 @@ export class Ftp
     /**
      * @return {Promise<any>}
      * */
-    public static cancel():Promise<any>
+    public cancel():Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.cancel((success:any) => resolve(success), (err:any) => reject(err))
@@ -356,7 +356,7 @@ export class Ftp
     /**
      * @return {Promise<any>}
      * */
-    public static disconnect():Promise<any>
+    public disconnect():Promise<any>
     {
         return new Promise((resolve, reject) => {
             cordova.plugin.ftp.disconnect((success:any) => resolve(success), (err:any) => reject(err))
