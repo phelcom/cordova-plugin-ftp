@@ -177,7 +177,7 @@ export class Ftp
      *      })
      *  }
      * */
-    public upload (local:string, remote:string):Promise<any>
+    public uploadWithoutProgress (local:string, remote:string):Promise<any>
     {
         return new Promise<void>((resolve, reject) => {
             cordova.plugin.ftp.upload(local, remote, (percentage:any) => {
@@ -209,7 +209,7 @@ export class Ftp
      *      })
      *  }
      * */
-    public uploadWithProgress (local:string, remote:string):Observable<any>
+    public upload(local:string, remote:string):Observable<any>
     {
         return new Observable((observer:Subscriber<any>) => {
             cordova.plugin.ftp.upload(local, remote, (percentage:any) => {
