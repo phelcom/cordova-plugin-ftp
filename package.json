@@ -27,5 +27,11 @@
   "homepage": "https://github.com/xfally/cordova-plugin-ftp",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@angular/core": "^14.2.5",
+    "lodash": "^4.17.21",
+    "rxjs": "^7.5.7",
+    "tslib": "^2.4.0"
   }
 }

@@ -1,7 +1,7 @@
 /**
  * This package requires Lodash, @angular/core and RXjs
  * */
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Observable, Subscriber } from "rxjs";
 
