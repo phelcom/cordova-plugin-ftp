@@ -3,8 +3,7 @@
  * */
 import {Injectable} from "@angular/core";
 import * as _ from 'lodash';
-import {Observable} from "rxjs/Observable";
-import {Subscriber} from "rxjs/Subscriber";
+import { Observable, Subscriber } from "rxjs";
 
 /**
  * @interface
